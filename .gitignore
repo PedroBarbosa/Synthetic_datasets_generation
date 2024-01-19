@@ -166,6 +166,7 @@ data/cache
 **/log*txt
 **/*dataset.csv.gz
 **/*archive_logger.csv.gz
+**/*archive_logger.csv
 **/*evolution_logger.csv
 **/preprocessing*
 **/*original_seq.csv
