@@ -1,0 +1,30 @@
+name: dress_experiments
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+    - python=3.10.12
+    - cudatoolkit=11.2.2
+    - cudnn=8.1.0
+    - meme=5.5.3
+    - pip=23.2.1
+    - pip:
+       - tensorflow==2.11.0
+       - spliceai==1.3.1
+       - optuna==3.4.0
+       - git+https://${GITHUB_TOKEN}@github.com/PedroBarbosa/generativeSplicing.git@81ded41
+       - GeneticEngine==0.8.1
+       - torch --index-url https://download.pytorch.org/whl/cu113
+       - git+https://github.com/tkzeng/Pangolin.git@5cf94b8
+       - ruamel.yaml
+       - pandas==2.1.0
+       - git+https://github.com/pyranges/pyranges.git@27ec3b6
+       - biopython
+       - seaborn
+       - dna_features_viewer
+       - statsmodels
+       - loguru
+       - tqdm
+       - rich_click
+       - jsonschema
+       - ipykernel

@@ -1,0 +1,4 @@
+cp ../2_performanceComparison/1_bestConfiguration30Seeds/bin_filler_5_trial499_seed30.yaml .
+./0_createNewConfigs.sh bin_filler_5_trial499_seed30.yaml
+find $(pwd -P) -mindepth 2 -name "*yaml" > listYaml.txt
+sbatch run_evolutions.sbatch listYaml.txt

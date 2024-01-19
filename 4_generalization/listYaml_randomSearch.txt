@@ -1,0 +1,4 @@
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed1_randomSearch.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed2_randomSearch.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed3_randomSearch.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed4_randomSearch.yaml

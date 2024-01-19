@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH --job-name=rna_evolve
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --gres=gpu:1
+#SBATCH --mem-per-gpu=23G
+#SBATCH --gres-flags=enforce-binding
+#SBATCH --array=0-180%1
+#SBATCH --output=rna_evolution_%j.log
+
+configs=$(readlink -f "$1")
+
+# Activate environment that has dress installed
+#source activate genSplicing_experiments
+
+# Load individual configuration files and run dress on each of them using JobArrays
+readarray yaml_files < $(readlink -f $configs)
+yaml=${yaml_files[$SLURM_ARRAY_TASK_ID]}
+
+CMD="srun dress generate --config $yaml ../data/FAS_exon6/data.tsv"
+echo $CMD
+$CMD
+
+#conda deactivate

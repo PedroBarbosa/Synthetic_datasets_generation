@@ -1,0 +1,5 @@
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed0.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed1.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed2.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed3.yaml
+/home/pbarbosa/git_repos/Synthetic_datasets_generation/4_generalization/seed4.yaml

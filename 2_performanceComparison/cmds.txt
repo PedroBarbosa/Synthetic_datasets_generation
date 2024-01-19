@@ -1,0 +1,5 @@
+cat ../1_hyperparameter_search/3_bestConfigurationPerStrategy.txt | parallel cp ../1_hyperparameter_search/1_bestTrialsMultipleSeeds/{}_seed0.yaml 1_bestConfiguration30seeds
+./0_createNewConfigs.sh
+cd 1_bestConfiguration30Seeds/ && find $(pwd -P) -name "*yaml" > listYaml.txt && cd ../
+sbatch run_evolutions.sbatch 1_bestConfiguration30Seeds/listYaml.txt
+
