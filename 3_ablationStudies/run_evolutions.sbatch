@@ -5,13 +5,13 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem-per-gpu=23G
 #SBATCH --gres-flags=enforce-binding
-#SBATCH --array=0-180%1
+#SBATCH --array=0-419%1
 #SBATCH --output=rna_evolution_%j.log
 
 configs=$(readlink -f "$1")
 
 # Activate environment that has dress installed
-#source activate genSplicing_experiments
+#source activate dress_experiments
 
 # Load individual configuration files and run dress on each of them using JobArrays
 readarray yaml_files < $(readlink -f $configs)
