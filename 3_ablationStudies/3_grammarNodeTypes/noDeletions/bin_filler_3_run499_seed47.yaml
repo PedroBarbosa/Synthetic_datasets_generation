@@ -1,0 +1,67 @@
+# Mandatory arguments (input) should be provided as command line arguments to the script.
+generate:
+  dry_run: false
+  verbosity: 0
+  seed: 47
+  model: spliceai
+  model_scoring_metric: mean
+  disable_gpu: false
+  outdir: 3_grammarNodeTypes/noDeletions/bin_filler_3_run499
+  outbasename:
+  preprocessing:
+    cache_dir: ../data/cache/
+    genome: ../data/cache/GRCh38.primary_assembly.genome.fa
+    use_full_sequence: false
+  fitness:
+    minimize_fitness: false
+    fitness_function: bin_filler
+    fitness_threshold: 0.0
+  archive:
+    archive_size: 5000
+    archive_diversity_metric: normalized_shannon
+    prune_archive_individuals: true
+    prune_at_generations:
+  population:
+    population_size: 100
+  individual:
+    individual_representation: tree_based
+  selection:
+    selection_method: tournament
+    tournament_size: 5
+    custom_mutation_operator: true
+    custom_mutation_operator_weight: 1.0
+    mutation_probability: 0.8
+    crossover_probability: 0.15000000000000002
+    operators_weight:
+    - 0.30000000000000004
+    elitism_weight:
+    - 0.30000000000000004
+    novelty_weight:
+    - 0.2
+    update_weights_at_generation:
+  stopping:
+    stopping_criterium:
+    - archive_size
+    - time
+    stop_at_value:
+    - 5000
+    - 10
+    stop_when_all: false
+  tracking_evolution:
+    disable_tracking: false
+    track_full_population: false
+    track_full_archive: false
+  grammar:
+    max_diff_units: 6
+    snv_weight: 0.30000000000000004
+    insertion_weight: 0.45
+    deletion_weight: 0
+    max_insertion_size: 2
+    max_deletion_size: 4
+    acceptor_untouched_range:
+    - -10
+    - 2
+    donor_untouched_range:
+    - -3
+    - 6
+    untouched_regions:

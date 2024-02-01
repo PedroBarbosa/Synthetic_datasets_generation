@@ -159,16 +159,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 .vscode
-generativeSplicing
 data/cache
-**/output/
-**/*db
 **/log*txt
 **/*dataset.csv.gz
 **/*archive_logger.csv.gz
 **/*archive_logger.csv
+**/*preprocessing*
 **/*evolution_logger.csv
-**/preprocessing*
 **/*original_seq.csv
-**/*.yaml
-**/RBFOX2_knockdown_randomSearch_old
+**/*args_used.yaml
