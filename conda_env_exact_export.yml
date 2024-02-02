@@ -246,7 +246,7 @@ dependencies:
       - filelock==3.13.1
       - fonttools==4.46.0
       - fsspec==2023.12.1
-      - geneticengine==0.8.1
+      - geneticengine==0.8.5
       - greenlet==3.0.1
       - idna==3.6
       - ipykernel==6.27.1
