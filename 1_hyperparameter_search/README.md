@@ -1,0 +1,21 @@
+### Hyperparameter optimization using optuna
+```
+srun python 0_optuna_optimizaton.py --is_random --fitness_function bin_filler ../data/FAS_exon6/data.tsv tpe &> log_optuna_random_bin_filler.txt
+
+srun python 0_optuna_optimizaton.py --is_random --fitness_function increase_archive_diversity ../data/FAS_exon6/data.tsv tpe &> log_optuna_random_IAD.txt
+
+srun python 0_optuna_optimizaton.py --fitness_function increase_archive_diversity ../data/FAS_exon6/data.tsv tpe &> log_optuna_IAD.txt
+
+srun python 0_optuna_optimizaton.py --fitness_function bin_filler ../data/FAS_exon6/data.tsv tpe &> log_optuna_bin_filler.txt
+```
+
+### Extract parameters of the best trials (5 for each Optuna run) and run several evolutions with those (5 seeds for each configuration) 
+This was done to check whether the results obtained were highly dependent on the random seed used (in Optuna, it was seed 0 for all optimizations).
+
+`python 1_extract_best_trials.py listOptuna.txt ../data/FAS_exon6/data.tsv`
+
+### Process output
+```
+cd 1_bestTrialsMultipleSeeds && find $PWD -mindepth 1 -type d > list_dress_output.txt && cd ../
+python 2_analyse_best_trials.py 1_bestTrialsMultipleSeeds/list_dress_output.txt 1_bestTrialsMultipleSeeds/bin_filler_1_run478/chr10_89010439_89012181_ENST00000652046_original_seq.csv
+```
