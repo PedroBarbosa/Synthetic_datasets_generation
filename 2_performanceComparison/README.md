@@ -8,3 +8,4 @@ sbatch run_evolutions.sbatch 1_bestConfiguration30Seeds/listYaml.txt
 
 ### Run extra analysis for fitness function eval
 `sbatch run_evolutions.sbatch 1_bestConfiguration30Seeds/with_IAD_and_best_BF_params/listYamls.txt`
+`sbatch run_evolutions.sbatch 1_bestConfiguration30Seeds/with_BF_and_best_IAD_params/listYamls.txt`

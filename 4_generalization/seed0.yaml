@@ -22,22 +22,22 @@ generate:
     prune_archive_individuals: true
     prune_at_generations:
   population:
-    population_size: 100
+    population_size: 500
   individual:
     individual_representation: tree_based
   selection:
     selection_method: tournament
     tournament_size: 5
     custom_mutation_operator: true
-    custom_mutation_operator_weight: 1.0
-    mutation_probability: 0.8
-    crossover_probability: 0.15000000000000002
+    custom_mutation_operator_weight: 0.8
+    mutation_probability: 0.7
+    crossover_probability: 0.25
     operators_weight:
-    - 0.30000000000000004
+    - 0.8
     elitism_weight:
-    - 0.30000000000000004
+    - 0.0
     novelty_weight:
-    - 0.2
+    - 0.1
     update_weights_at_generation:
   stopping:
     stopping_criterium:
@@ -45,19 +45,19 @@ generate:
     - time
     stop_at_value:
     - 5000
-    - 10
+    - 5
     stop_when_all: false
   tracking_evolution:
     disable_tracking: false
     track_full_population: false
     track_full_archive: false
   grammar:
-    max_diff_units: 6
-    snv_weight: 0.30000000000000004
-    insertion_weight: 0.45
-    deletion_weight: 0.2
-    max_insertion_size: 2
-    max_deletion_size: 4
+    max_diff_units: 5
+    snv_weight: 0.05
+    insertion_weight: 0.75
+    deletion_weight: 0.30000000000000004
+    max_insertion_size: 5
+    max_deletion_size: 3
     acceptor_untouched_range:
     - -10
     - 2

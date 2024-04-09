@@ -7,15 +7,15 @@ import ruamel.yaml
 import optuna
 from optuna.study import MaxTrialsCallback
 from optuna.trial import TrialState
-from datasetgeneration.archive import Archive
-from datasetgeneration.evolution import (
+from dress.datasetgeneration.archive import Archive
+from dress.datasetgeneration.evolution import (
     do_evolution,
     get_score_of_input_sequence,
 )
-from datasetgeneration.json_schema import flatten_dict
-from datasetgeneration.preprocessing.gtf_cache import preprocessing
+from dress.datasetgeneration.json_schema import flatten_dict
+from dress.datasetgeneration.preprocessing.gtf_cache import preprocessing
 
-from datasetgeneration.preprocessing.utils import tabular_file_to_genomics_df
+from dress.datasetgeneration.preprocessing.utils import tabular_file_to_genomics_df
 
 
 def print_best_callback(study, trial):
@@ -40,7 +40,7 @@ def _objetive(trial, _input, fit_fun, is_random, params):
     # define parameters
     params["disable_tracking"] = True
     params["stopping_criterium"] = ["time", "archive_size"]
-    params["stop_at_value"] = [10, 5000]
+    params["stop_at_value"] = [5, 5000]
     params["stop_when_all"] = False
     params["prune_archive_individuals"] = False
 
@@ -62,7 +62,7 @@ def _objetive(trial, _input, fit_fun, is_random, params):
 
     # Evolutionary alg
     params["population_size"] = trial.suggest_int(
-        "population_size", 100, 2000, step=200
+        "population_size", 100, 1900, step=200
     )
 
     # Dynamic operator weights
@@ -72,6 +72,7 @@ def _objetive(trial, _input, fit_fun, is_random, params):
 
     if is_random:
         selection_method = "tournament"
+        tournament_size = 5
         custom_mutation_operator = False
         custom_mutation_operator_weight = 0
         mutation_probability = 0
@@ -83,12 +84,20 @@ def _objetive(trial, _input, fit_fun, is_random, params):
         selection_method = trial.suggest_categorical(
             "selection_method", choices=["tournament", "lexicase"]
         )
+        if selection_method == "tournament":
+            #tournament_size = trial.suggest_categorical("tournament_size", [2, 5, 10, 25, 50])
+            tournament_size = 5
+        else:
+            tournament_size = 5
+            
         custom_mutation_operator = trial.suggest_categorical(
             "custom_mutation_operator", choices=[True, False]
         )
-        custom_mutation_operator_weight = trial.suggest_float(
-            "custom_mutation_operator_weight", 0, 1, step=0.1
-        )
+        if custom_mutation_operator is True:
+            custom_mutation_operator_weight = trial.suggest_float("custom_mutation_operator_weight", 0, 1, step=0.1)
+        else:
+            custom_mutation_operator_weight = 0
+            
         mutation_probability = trial.suggest_float(
             "mutation_probability", 0.2, 1, step=0.1
         )
@@ -126,6 +135,7 @@ def _objetive(trial, _input, fit_fun, is_random, params):
 
     #     params["update_weights_at_generation"] = sorted(update_at_gens)
     params["selection_method"] = selection_method
+    params["tournament_size"] = tournament_size
     params["custom_mutation_operator"] = custom_mutation_operator
     params["custom_mutation_operator_weight"] = custom_mutation_operator_weight
     params["mutation_probability"] = mutation_probability
@@ -162,7 +172,7 @@ def _objetive(trial, _input, fit_fun, is_random, params):
     try:
         archive = do_evolution(_input, **params)
     except Exception as e:
-        raise optuna.TrialPruned()
+       raise optuna.TrialPruned()
 
     end_time = time.time()
     return archive, end_time - start_time
@@ -190,7 +200,7 @@ class NSGAIISampler(Sampler):
     ) -> None:
         super().__init__(study_name, _input, _args)
         self.sampler = optuna.samplers.NSGAIISampler(
-            seed=11, constraints_func=_constraints
+            seed=123, constraints_func=_constraints
         )
         study = optuna.create_study(
             directions=["maximize", "minimize"],
@@ -235,7 +245,7 @@ class TPESampler(Sampler):
     def __init__(self, study_name, n_trials, _input, fit_func, is_random, _args):
         super().__init__(study_name, _input, _args)
         self.sampler = optuna.samplers.TPESampler(
-            seed=11, constraints_func=_constraints
+            seed=123, constraints_func=_constraints
         )
 
         study = optuna.create_study(

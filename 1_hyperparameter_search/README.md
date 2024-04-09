@@ -17,5 +17,5 @@ This was done to check whether the results obtained were highly dependent on the
 ### Process output
 ```
 cd 1_bestTrialsMultipleSeeds && find $PWD -mindepth 1 -type d > list_dress_output.txt && cd ../
-python 2_analyse_best_trials.py 1_bestTrialsMultipleSeeds/list_dress_output.txt 1_bestTrialsMultipleSeeds/bin_filler_1_run478/chr10_89010439_89012181_ENST00000652046_original_seq.csv
+python 2_analyse_best_trials.py 1_bestTrialsMultipleSeeds/list_dress_output.txt 1_bestTrialsMultipleSeeds/bin_filler_1_trial428/chr10_89010439_89012181_ENST00000652046_original_seq.csv
 ```
