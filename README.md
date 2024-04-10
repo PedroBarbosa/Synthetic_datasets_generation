@@ -1,5 +1,11 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10607869.svg)](https://doi.org/10.5281/zenodo.10607869)
+
 # Generation of synthetic genomics datasets
 
-This repository contains the analysis steps associated with the paper "Semantically Rich Local Dataset Generation for Explainable AI in Genomics", which introduces a new method for generating local synthetic genomic datasets based on grammars of sequence perturbations.
+This repository contains the analysis steps associated with the paper ["Semantically Rich Local Dataset Generation for Explainable AI in Genomics"](https://doi.org/10.1145/3638529.3653990), accepted at [GECCO 2024](https://gecco-2024.sigevo.org/HomePage), which introduces a new approach for generating local synthetic genomic datasets based on grammars of sequence perturbations.
 
-To reproduce the analysis, there are README files within each section with the steps employed. It is important to note that our evolutionary searches were conducted on a specific GPU model (NVIDIA GeForce RTX 3090) within a local server environment. Given this hardware specificity and the time constraint of 10 minutes per experiment, the exact replication of results may vary when using different hardware setups. Figures in the paper were generated with the `figures.ipynb` notebook.
+Code used to generate the figures of the manuscript is available in the `figures.ipynb` notebook. 
+
+To reproduce the analysis, there are README files within each section with the steps employed. It is important to note that our evolutionary searches were conducted on a specific GPU model (NVIDIA GeForce RTX 3090) within a local server environment. Given this hardware specificity and the time constraint of 5 minutes per experiment, the exact replication of results may vary when using different hardware setups.
+
+A full copy of this repository along with the generated datasets is available at [Zenodo](https://zenodo.org/records/10607869).
