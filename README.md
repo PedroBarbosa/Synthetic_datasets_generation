@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10607869.svg)](https://doi.org/10.5281/zenodo.10607869)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10955718.svg)](https://doi.org/10.5281/zenodo.10955718)
 
 # Generation of synthetic genomics datasets
 
