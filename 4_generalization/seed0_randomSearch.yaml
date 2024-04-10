@@ -22,7 +22,7 @@ generate:
     prune_archive_individuals: true
     prune_at_generations:
   population:
-    population_size: 1700
+    population_size: 1900
   individual:
     individual_representation: tree_based
   selection:
@@ -45,19 +45,19 @@ generate:
     - time
     stop_at_value:
     - 5000
-    - 10
+    - 5
     stop_when_all: false
   tracking_evolution:
     disable_tracking: false
     track_full_population: false
     track_full_archive: false
   grammar:
-    max_diff_units: 6
-    snv_weight: 0.05
-    insertion_weight: 0.65
-    deletion_weight: 0.25
+    max_diff_units: 5
+    snv_weight: 0.25
+    insertion_weight: 0.4
+    deletion_weight: 0.35000000000000003
     max_insertion_size: 5
-    max_deletion_size: 5
+    max_deletion_size: 4
     acceptor_untouched_range:
     - -10
     - 2

@@ -188,26 +188,25 @@ def check_best_trials(file):
     #         study.best_trials, key=lambda obj: obj.values[0], reverse=True
     #     )[:5]
 
-    #else:
+    # else:
     best_trial_ids = (
-            study.trials_dataframe()
-            .drop_duplicates(subset='value', keep='first')
-            .sort_values("value", ascending=False)
-            .head(5).index
+        study.trials_dataframe()
+        .drop_duplicates(subset="value", keep="first")
+        .sort_values("value", ascending=False)
+        .head(5)
+        .index
     )
-        # best_trial_ids = (
-        #     study.trials_dataframe().sort_values("value", ascending=False).head(5).index
-        # )
-    sorted_objects = [
-            trial for trial in study.trials if trial.number in best_trial_ids
-        ]
+    # best_trial_ids = (
+    #     study.trials_dataframe().sort_values("value", ascending=False).head(5).index
+    # )
+    sorted_objects = [trial for trial in study.trials if trial.number in best_trial_ids]
 
     for i, _trial in enumerate(sorted_objects):
         i += 1
         _params = get_params(_trial)
         _params[1]["fitness_function"] = fitness_function
         best_params[f"{fitness_function}{is_random}_{i}_trial{_params[0]}"] = _params[1]
-        
+
     return best_params
 
 
@@ -247,16 +246,17 @@ def main():
     parser.add_argument(
         "--working_dir",
         metavar="",
-        help="Path to the repository of the generativeSplicing project. Default: /home/pbarbosa/git_repos/generativeSplicing",
-        default="/home/pbarbosa/git_repos/generativeSplicing",
+        help="Path to the repository of the generativeSplicing project. Default: /home/pbarbosa/git_repos/dress",
+        default="/home/pbarbosa/git_repos/dress",
     )
+
     args = parser.parse_args()
 
     filelist = open(args.optuna_results, "r")
     combinations = {}
     common_to_all = {
         "stopping_criterium": ["archive_size", "time"],
-        "stop_at_value": [5000, 10],
+        "stop_at_value": [5000, 5],
         "track_full_archive": False,
         "prune_archive_individuals": True,
     }

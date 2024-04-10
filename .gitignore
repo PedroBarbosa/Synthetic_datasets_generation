@@ -168,3 +168,4 @@ data/cache
 **/*evolution_logger.csv
 **/*original_seq.csv
 **/*args_used.yaml
+4_generalization/3_motifs/

@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem-per-gpu=23G
 #SBATCH --gres-flags=enforce-binding
-#SBATCH --array=0-419%1
+#SBATCH --array=0-390%1
 #SBATCH --output=rna_evolution_%j.log
 
 configs=$(readlink -f "$1")

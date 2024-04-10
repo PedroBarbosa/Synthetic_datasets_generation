@@ -4,8 +4,8 @@ from typing import List
 import pandas as pd
 import glob
 import gzip
-from datasetevaluation.dataset import Dataset
-from datasetgeneration.archive import Archive
+from dress.datasetgeneration.dataset import Dataset
+from dress.datasetgeneration.archive import Archive
 
 
 def load_archive_trackers(dress_output_directories: list) -> pd.DataFrame:
@@ -54,7 +54,7 @@ def load_archives(dress_output_directories: list, original_seq: str) -> pd.DataF
 
     for single_evol in dress_output_directories:
         for file in glob.glob(single_evol + "/*dataset.csv.gz"):
-            dataset = Dataset(original_seq, file)
+            dataset = Dataset(file, original_seq)
             dataset.data["Run_id"] = single_evol.split("/")[-1]
             all_datasets.append(dataset)
 
